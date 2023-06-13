@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Mr.M
@@ -22,7 +25,23 @@ public class CourseCategoryMapperTests {
 
     @Test
     public void testCourseCategoryMapper() {
-        List<CourseCategoryTreeDto> courseCategoryTreeDtos = courseCategoryMapper.selectTreeNodes("1-1");
-        System.out.println(courseCategoryTreeDtos);
+        List<CourseCategoryTreeDto> courseCategoryTreeDtos = courseCategoryMapper.selectTreeNodes("1");
+        courseCategoryTreeDtos.forEach(System.out::println);
+        Map<String, CourseCategoryTreeDto> mapTemp = courseCategoryTreeDtos.stream().filter(item -> !(item.getId().equals("1")))
+                .collect(Collectors.toMap(key -> key.getId(), value -> value, (key1, key2) -> key2));
+        mapTemp.forEach(((s, courseCategoryTreeDto) -> System.out.println("id:" + s + " " + courseCategoryTreeDto)));
+        List<CourseCategoryTreeDto> categoryTreeDtos = new ArrayList<>();
+        courseCategoryTreeDtos.stream().filter(item -> !"1".equals(item.getId())).forEach(
+                item -> {
+                    if (item.getParentid().equals("1")) categoryTreeDtos.add(item);
+                    CourseCategoryTreeDto courseCategoryTreeDto = mapTemp.get(item.getParentid());
+                    if (courseCategoryTreeDto != null) {
+                        if (courseCategoryTreeDto.getChildrenTreeNodes() == null)
+                            courseCategoryTreeDto.setChildrenTreeNodes(new ArrayList<CourseCategoryTreeDto>());
+                        courseCategoryTreeDto.getChildrenTreeNodes().add(item);
+                    }
+                }
+        );
+        categoryTreeDtos.forEach(System.out::println);
     }
 }

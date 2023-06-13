@@ -48,6 +48,19 @@ public class CourseCategory implements Serializable {
      */
     private Integer orderby;
 
+    @Override
+    public String toString() {
+        return "CourseCategory{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", label='" + label + '\'' +
+                ", parentid='" + parentid + '\'' +
+                ", isShow=" + isShow +
+                ", orderby=" + orderby +
+                ", isLeaf=" + isLeaf +
+                '}';
+    }
+
     /**
      * 是否叶子
      */
