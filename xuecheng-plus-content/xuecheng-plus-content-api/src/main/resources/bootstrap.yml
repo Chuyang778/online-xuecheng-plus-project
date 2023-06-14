@@ -15,9 +15,6 @@ spring:
 logging:
   config: classpath:log4j2-dev.xml
 
-mybatis-plus:
-  configLocation:
-    map-underscore-to-camel-case: false
 
 swagger:
   title: "学成在线内容管理系统"
