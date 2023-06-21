@@ -1,0 +1,18 @@
+2023-06-19 13:55:11,167 ERROR [xxl-job, executor ExecutorRegistryThread][XxlJobRemotingUtil.java:143] - unknown protocol: localhost
+java.net.MalformedURLException: unknown protocol: localhost
+	at java.net.URL.<init>(URL.java:618)
+	at java.net.URL.<init>(URL.java:508)
+	at java.net.URL.<init>(URL.java:457)
+	at com.xxl.job.core.util.XxlJobRemotingUtil.postBody(XxlJobRemotingUtil.java:73)
+	at com.xxl.job.core.biz.client.AdminBizClient.registry(AdminBizClient.java:42)
+	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:48)
+	at java.lang.Thread.run(Thread.java:750)
+2023-06-19 13:55:34,694 ERROR [xxl-job, executor ExecutorRegistryThread][XxlJobRemotingUtil.java:143] - unknown protocol: localhost
+java.net.MalformedURLException: unknown protocol: localhost
+	at java.net.URL.<init>(URL.java:618)
+	at java.net.URL.<init>(URL.java:508)
+	at java.net.URL.<init>(URL.java:457)
+	at com.xxl.job.core.util.XxlJobRemotingUtil.postBody(XxlJobRemotingUtil.java:73)
+	at com.xxl.job.core.biz.client.AdminBizClient.registryRemove(AdminBizClient.java:47)
+	at com.xxl.job.core.thread.ExecutorRegistryThread$1.run(ExecutorRegistryThread.java:84)
+	at java.lang.Thread.run(Thread.java:750)

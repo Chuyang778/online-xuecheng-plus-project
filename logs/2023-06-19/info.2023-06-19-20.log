@@ -1,0 +1,4 @@
+2023-06-19 21:00:00,006 INFO [xxl-job, EmbedServer bizThreadPool-1917502723][XxlJobExecutor.java:246] - >>>>>>>>>>> xxl-job regist JobThread success, jobId:3, handler:com.xxl.job.core.handler.impl.MethodJobHandler@9729a97[class com.xuecheng.media.service.jobhandler.SampleXxlJob#shardingJobHandler]
+2023-06-19 21:00:00,006 INFO [xxl-job, EmbedServer bizThreadPool-1917502723][XxlJobExecutor.java:246] - >>>>>>>>>>> xxl-job regist JobThread success, jobId:3, handler:com.xxl.job.core.handler.impl.MethodJobHandler@9729a97[class com.xuecheng.media.service.jobhandler.SampleXxlJob#shardingJobHandler]
+2023-06-19 21:00:00,013 DEBUG [xxl-job, JobThread-3-1687179600006][TriggerCallbackThread.java:40] - >>>>>>>>>>> xxl-job, push callback request, logId:88
+2023-06-19 21:00:00,013 DEBUG [xxl-job, JobThread-3-1687179600006][TriggerCallbackThread.java:40] - >>>>>>>>>>> xxl-job, push callback request, logId:88

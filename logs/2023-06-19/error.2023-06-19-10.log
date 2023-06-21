@@ -1,0 +1,1 @@
+2023-06-19 10:10:13,982 ERROR [http-nio-63050-exec-10][MediaFileServiceImpl.java:285] - 合并文件出错,bucket:video,objectName:3/7/37de593566957c2eaf32657aea26e0df/37de593566957c2eaf32657aea26e0df.mp4,错误信息:A timeout occurred while trying to lock a resource, please reduce your request rate
