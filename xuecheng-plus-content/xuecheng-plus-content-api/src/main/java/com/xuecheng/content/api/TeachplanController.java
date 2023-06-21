@@ -1,7 +1,9 @@
 package com.xuecheng.content.api;
 
+import com.xuecheng.content.model.dto.BindTeachplanMediaDto;
 import com.xuecheng.content.model.dto.SaveTeachplanDto;
 import com.xuecheng.content.model.dto.TeachplanDto;
+import com.xuecheng.content.service.TeachplanMediaService;
 import com.xuecheng.content.service.TeachplanService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,6 +23,8 @@ import java.util.List;
 public class TeachplanController {
     @Autowired
     private TeachplanService teachplanService;
+    @Autowired
+    private TeachplanMediaService teachplanMediaService;
 
     @ApiOperation("查询课程计划树形结构")
     @GetMapping("/teachplan/{courseId}/tree-nodes")
@@ -45,6 +49,18 @@ public class TeachplanController {
     @PostMapping("/teachplan/{moveType}/{teachplanId}")
     public void orderByTeachplan(@PathVariable String moveType, @PathVariable Long teachplanId) {
         teachplanService.orderByTeachplan(moveType, teachplanId);
+    }
+
+    @ApiOperation(value = "课程计划和媒资信息绑定")
+    @PostMapping("/teachplan/association/media")
+    public void associationMedia(@RequestBody BindTeachplanMediaDto bindTeachplanMediaDto) {
+        teachplanMediaService.associationMedia(bindTeachplanMediaDto);
+    }
+
+    @ApiOperation("课程计划解除媒资信息绑定")
+    @DeleteMapping("/teachplan/association/media/{teachPlanId}/{mediaId}")
+    public void unassociationMedia(@PathVariable Long teachPlanId, @PathVariable Long mediaId) {
+        teachplanMediaService.unassociationMedia(teachPlanId, mediaId);
     }
 
 }

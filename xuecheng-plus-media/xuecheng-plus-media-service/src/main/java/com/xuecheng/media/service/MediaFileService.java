@@ -11,6 +11,7 @@ import com.xuecheng.media.model.po.MediaFiles;
 import io.minio.errors.*;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -37,4 +38,8 @@ public interface MediaFileService extends IService<MediaFiles> {
     RestResponse uploadChunk(String fileMd5, int chunk, String localChunkFilePath);
 
     RestResponse mergechunks(Long companyId, String fileMd5, int chunkTotal, UploadFileParamsDto uploadFileParamsDto);
+
+    File downloadFileFromMinIO(String bucket, String objectName);
+
+    boolean addMediaFilesToMinIO(String localFilePath, String mimeType, String bucket, String objectName);
 }
