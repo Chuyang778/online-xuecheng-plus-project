@@ -154,6 +154,11 @@ public class MediaFileServiceImpl extends ServiceImpl<MediaFilesMapper, MediaFil
         return false;
     }
 
+    @Override
+    public MediaFiles getFileById(String mediaId) {
+        return this.getById(mediaId);
+    }
+
     @Transactional
     public MediaFiles addMediaFilesToDb(Long companyId, String fileMd5, UploadFileParamsDto uploadFileParamsDto, String bucket, String objectName) {
         MediaFiles mediaFiles = mediaFilesMapper.selectById(fileMd5);
@@ -203,7 +208,7 @@ public class MediaFileServiceImpl extends ServiceImpl<MediaFilesMapper, MediaFil
         String mimeType = getMimeType(extension);
         if (mimeType.equals("video/x-msvideo")) {
             MediaProcess mediaProcess = new MediaProcess();
-            BeanUtils.copyProperties(mediaFiles,mediaProcess);
+            BeanUtils.copyProperties(mediaFiles, mediaProcess);
             mediaProcess.setStatus("1");
             mediaProcess.setFailCount(0);
             mediaProcessMapper.insert(mediaProcess);
