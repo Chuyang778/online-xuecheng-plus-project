@@ -3,6 +3,8 @@ package com.xuecheng.content.service.jobhandler;
 import com.xuecheng.messagesdk.model.po.MqMessage;
 import com.xuecheng.messagesdk.service.MessageProcessAbstract;
 import com.xuecheng.messagesdk.service.MqMessageService;
+import com.xxl.job.core.context.XxlJobHelper;
+import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -19,6 +21,17 @@ import java.util.concurrent.TimeUnit;
 public class CoursePublishTask extends MessageProcessAbstract {
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @XxlJob("CoursePublishJobHandler")
+    public void coursePublishJobHandler() throws Exception {
+
+        // 分片参数
+        int shardIndex = XxlJobHelper.getShardIndex();//执行器的序号，从0开始
+        int shardTotal = XxlJobHelper.getShardTotal();//执行器总数
+        //调用抽象类的方法执行任务
+        process(shardIndex,shardTotal, "course_publish",30,60);
+
+    }
 
     @Override
     public boolean execute(MqMessage mqMessage) {

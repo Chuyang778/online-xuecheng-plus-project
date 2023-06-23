@@ -24,6 +24,7 @@ import io.minio.messages.DeleteObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -90,7 +91,7 @@ public class MediaFileServiceImpl extends ServiceImpl<MediaFilesMapper, MediaFil
     }
 
     @Override
-    public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath) {
+    public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath,String objectName) {
         File file = new File(localFilePath);
         if (!file.exists()) XueChengPlusException.cast("文件不存在!");
 
@@ -104,7 +105,7 @@ public class MediaFileServiceImpl extends ServiceImpl<MediaFilesMapper, MediaFil
 
         String defaultFolderPath = getDefaultFolderPath();
 
-        String objectName = defaultFolderPath + fileMd5 + extension;
+        if(StringUtils.isEmpty(objectName)) objectName = defaultFolderPath + fileMd5 + extension;
 
         boolean result = addMediaFilesToMinIO(localFilePath, mimeType, bucket_Files, objectName);
         if (!result) {
