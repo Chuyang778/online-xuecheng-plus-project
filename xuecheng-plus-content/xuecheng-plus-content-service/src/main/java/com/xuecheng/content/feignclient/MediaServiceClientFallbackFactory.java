@@ -17,7 +17,7 @@ import java.io.IOException;
 public class MediaServiceClientFallbackFactory implements FallbackFactory<MediaServiceClient> {
     @Override
     public MediaServiceClient create(Throwable throwable) {
-        return (filedata, folder, objectName) -> {
+        return (filedata, objectName) -> {
             log.debug("远程调用上传文件的接口发生熔断:{}", throwable.toString(), throwable);
             return null;
         };
