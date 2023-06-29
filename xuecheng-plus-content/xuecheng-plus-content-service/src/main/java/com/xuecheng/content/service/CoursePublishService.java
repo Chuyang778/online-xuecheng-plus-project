@@ -5,6 +5,7 @@ import com.xuecheng.content.model.dto.CoursePreviewDto;
 import com.xuecheng.content.model.po.CoursePublish;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * @author ChuYang
@@ -19,5 +20,5 @@ public interface CoursePublishService extends IService<CoursePublish> {
 
     File generateCourseHtml(Long courseId);
 
-    void uploadCourseHtml(Long courseId, File file);
+    void uploadCourseHtml(Long courseId, File file) throws IOException;
 }

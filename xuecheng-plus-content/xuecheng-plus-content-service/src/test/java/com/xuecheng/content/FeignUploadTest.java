@@ -20,6 +20,7 @@ import java.io.IOException;
 public class FeignUploadTest {
 
 
+    @Autowired
     MediaServiceClient mediaServiceClient;
 
     @Test
@@ -29,9 +30,7 @@ public class FeignUploadTest {
         File file = new File("E:\\app\\project-xczx2-portal-vue-ts\\yarn-error.log");
         MultipartFile multipartFile = MultipartSupportConfig.getMultipartFile(file);
         //远程调用得到返回值
-        String upload = mediaServiceClient.uploadFile(multipartFile, "yarn-error.log");
-        if (upload == null) {
-            System.out.println("走了降级逻辑");
-        }
+        String upload = mediaServiceClient.upload(multipartFile,"logs","yarn-error.log");
+        System.out.println(upload);
     }
 }

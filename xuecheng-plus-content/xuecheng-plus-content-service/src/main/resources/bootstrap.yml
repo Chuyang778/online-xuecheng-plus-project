@@ -37,7 +37,6 @@ spring:
           - data-id: redis-${spring.profiles.active}.yaml
             group: xuecheng-plus-project
             refresh: true
-          - data-id:
           - data-id: feign-${spring.profiles.active}.yaml
             group: xuecheng-plus-common
             refresh: true
