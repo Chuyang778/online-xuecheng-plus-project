@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 
 import javax.annotation.Resource;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Mr.M
@@ -28,6 +29,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
 
     //客户端详情服务
     @Override

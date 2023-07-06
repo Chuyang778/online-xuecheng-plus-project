@@ -10,17 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
-/**
- * @author ChuYang
- * @version 1.0
- * <p>
- * 媒资管理服务远程调用接口
- * <p>
- * 媒资管理服务远程调用接口
- */
-/**
- * 媒资管理服务远程调用接口
- */
+
 
 /**
  * 媒资管理服务远程调用接口
